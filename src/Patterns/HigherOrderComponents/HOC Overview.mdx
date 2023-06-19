@@ -1,0 +1,67 @@
+import {
+  Meta,
+  Subtitle,
+  Primary,
+  Controls,
+  Stories,
+  Story,
+  Canvas,
+} from "@storybook/blocks";
+import * as HOCStories from "./SimpleHOC.stories";
+
+<Meta of={HOCStories} />
+
+## Higher Order Components
+
+# Their current place in the React ecosystem
+
+Higher Order components where a popular pattern when it was more common to use React in a class based manner, with the introduction of Hooks the use of them might be on the downward trend.
+It is however usedful to understand the problems they solved and the specifics of how they are implemented, they many well by used in projects and it would be good to understand at a glance what is going on.
+
+# The basics
+
+It is a pattern which uses the existing concept of Higher Order Functions in Javascript and applies it to Reacts components.
+It's also a good examples of where you may see closures in a React application.
+
+It is a pattern to combat the 'DRY' principle, by allowing developers to reuse component logic.
+A developer is able to create a relevant component, which is then passed into a HOC function.
+This function will then return a version of the original component with the additional logic added onto it.
+
+There many be many cases where this may be wanted and the reuse is useful, for example there may be many component which need to know the browsers location so you could create a HOC to provide components with that information.
+Another common use case would be to pass some context into a component as this would likely be needed in many components.
+
+### Alternate solutions to the problems solved by HOC
+
+- Hooks and especially creating your own custom hooks
+- You can create Wrapper Compoents which are essentailly to same thing but more readable
+
+---
+
+# Simple Button Component used as HOC
+
+Here is a simple button component with very basic props required.
+We are going to see how using the HOC pattern we can create a function which applies logic to the basic Button component.
+
+<Primary />
+
+## Inputs
+
+The default Button component accepts these following inputs (props):
+
+<Controls />
+
+## Creating a HOC
+
+Listed below are some example of how we would use a HOC function with the button component.
+
+The unmodified Button
+
+<Canvas of={HOCStories.DefaultButton} />
+
+Here we are passing the label prop using the HOC pattern.
+
+<Canvas of={HOCStories.HOCLabel} />
+
+Here we are passing a click function using the HOC pattern, see how we are still able to pass through the label prop as normal to the returned component.
+
+<Canvas of={HOCStories.HOCAlert} />

@@ -1,17 +1,29 @@
 import { ComponentProps } from "react";
 
-const Button = ({ onClick }: any) => {
-  return <button onClick={onClick}> Click</button>;
+interface ButtonProps {
+  onClick?: () => void;
+  label?: string;
+}
+
+export const Button = ({ onClick, label }: ButtonProps) => {
+  return <button onClick={onClick}> {label}</button>;
 };
 
-const withLogic = (Component: React.ComponentType) => {
-  const hocProp = "testing";
+export const withLabel = (Component: React.ComponentType) => {
+  const label = "From HOC";
+
+  return (props: ComponentProps<any>) => <Component {...props} label={label} />;
+};
+
+export const withAlert = (Component: React.ComponentType) => {
+  const handleClick = (): void => {
+    alert("From the Higher Order Function!");
+  };
 
   return (props: ComponentProps<any>) => (
-    <Component {...props} hocProp={hocProp} />
+    <Component {...props} onClick={handleClick} />
   );
 };
 
-const ButtonWithLogic = withLogic(Button);
-
-export default ButtonWithLogic;
+export const ButtonWithLabel = withLabel(Button);
+export const ButtonWithAlert = withAlert(Button);
