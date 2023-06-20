@@ -32,8 +32,8 @@ Another common use case would be to pass some context into a component as this w
 
 ### Alternate solutions to the problems solved by HOC
 
-- Hooks and especially creating your own custom hooks
-- You can create Wrapper Compoents which are essentailly to same thing but more readable
+- Hooks and especially creating your own custom hooks are often a good solution to similar problems however there are some cases where HOC can be a good fit
+- You can create Wrapper Components which can be similar but more readable.
 
 ---
 
@@ -65,3 +65,11 @@ Here we are passing the label prop using the HOC pattern.
 Here we are passing a click function using the HOC pattern, see how we are still able to pass through the label prop as normal to the returned component.
 
 <Canvas of={HOCStories.HOCAlert} />
+
+//TODO expand on these use cases with examples and rewrite in own words
+//cases listed from developer way post
+Useful Use Cases for the HOC Pattern
+
+to enhance callbacks and React lifecycle events with additional functionality, like sending logging or analytics events
+to intercept DOM events, like blocking global keyboard shortcuts when a modal dialog is open
+to extract a piece of Context without causing unnecessary re-renders in the component
